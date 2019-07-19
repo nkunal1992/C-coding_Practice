@@ -42,12 +42,12 @@ void MergeOverlappingIntervals(vector<pair<int,int>> &a){
         cout<<i.first<<" , "<<i.second<<endl;
 }
 
-/* It's wrong, check it later
 void fun(vector<pair<int,int>> a){
     int id = 0;
+    sort(a.begin(), a.end(),greater<pair<int,int>>()); //sort in decreasing order
     for(int i=0; i<a.size(); i++){
-        if(id!=0 && a[i-1].second <= a[i].first){
-            while(id != 0 && a[id-1].second <= a[i].first){
+        if(id!=0 && a[i-1].first <= a[i].second){
+            while(id != 0 && a[id-1].first <= a[i].second){
                 a[id-1].second = max(a[id-1].second,a[i].second);
                 a[id-1].first = min(a[id-1].first,a[i].first);
                 id--;
@@ -60,11 +60,10 @@ void fun(vector<pair<int,int>> a){
     for(int i=0; i<id;i++)
         cout<<a[i].first<<","<<a[i].second<<endl;
 }
-*/
 
 
 int main(){
     vector<pair<int,int>> a = {{1,3},{2,4},{9,15},{5,7},{6,8}};
-    MergeOverlappingIntervals(a);
-    //fun(a);
+   // MergeOverlappingIntervals(a);
+    fun(a);
 }
